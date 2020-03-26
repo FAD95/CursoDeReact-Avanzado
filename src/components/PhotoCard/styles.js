@@ -8,7 +8,9 @@ export const ImgWrapper = styled.div`
   overflow: hidden;
   padding: 56.25% 0 0 0;
   position: relative;
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 2em;
 `
 
 export const Img = styled.img`
@@ -26,6 +28,8 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
   padding-top: 8px;
+  width: 80%;
+  margin: 0 auto;
   & svg {
     margin-right: 4px;
   }
