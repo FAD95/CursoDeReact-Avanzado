@@ -2,21 +2,8 @@ import React, { useEffect, useState, Fragment } from 'react'
 import { Category } from '../Category/index'
 import { ListContainer, List, Item } from './styles'
 import Loader from 'react-loader-spinner'
-const useCategoriesData = () => {
-  const [categories, setCategories] = useState([])
-  const [loading, setLoading] = useState(false)
-  useEffect(() => {
-    setLoading(true)
-    window
-      .fetch('https://petgram-fad-api.now.sh/categories')
-      .then((res) => res.json())
-      .then((res) => {
-        setCategories(res)
-        setLoading(false)
-      })
-  }, [])
-  return { categories, loading }
-}
+import { useCategoriesData } from '../../hooks/useCategoriesData'
+
 export const ListOfCategories = () => {
   const { categories, loading } = useCategoriesData()
   const [showFixed, setShowFixed] = useState(false)
@@ -37,7 +24,7 @@ export const ListOfCategories = () => {
         {loading ? (
           <Item key="loading">
             <Loader
-              type="TailSpin"
+              type="ThreeDots"
               color="#00BFFF"
               height={100}
               width={100}
