@@ -2,10 +2,6 @@ import styled, { css } from 'styled-components'
 import { bounceDown } from '../../styles/animation'
 export const ListContainer = styled.div`
   overflow: hidden;
-  min-height: 125px;
-  display: flex;
-  margin: 0 auto;
-  align-items: center;
   ${(props) =>
     props.fixed &&
     css`
@@ -14,18 +10,20 @@ export const ListContainer = styled.div`
         border-radius: 60px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
         left: 0;
-        margin: 0 auto;
-        width: 500px;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 400px;
+        width: 100%;
         padding: 5px;
         position: fixed;
-        right: 0;
         top: -20px;
-        transform: scale(0.5);
+        transform: scale(0.6);
         z-index: 1;
         overflow-y: auto;
         ${bounceDown({ time: '1s' })}
       }
-    `};
+    `}
 `
 export const List = styled.ul`
   display: flex;
