@@ -1,14 +1,45 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { GlobalStyle } from './styles/GlobalStyles'
 import { Logo } from './components/Logo'
-import { ListOfCategories } from './components/ListOfCategories'
-import { ListOfPhotoCards } from './containers/ListOfPhotoCards'
+import { NavBar } from './components/NavBar/NavBar'
+import { Home } from './pages/Home'
+import { Detail } from './pages/Detail'
+import { Favs } from './pages/Favs'
+import { User } from './pages/User'
+import { NotRegisteredUser } from './pages/NotRegisteredUser'
+import { Router } from '@reach/router'
 
-export const App = () => (
-  <div>
-    <GlobalStyle />
-    <Logo />
-    <ListOfCategories />
-    <ListOfPhotoCards categoryId={1} />
-  </div>
-)
+const UserLogged = ({ children }) => {
+  return children({ isAuth: false })
+}
+
+export const App = () => {
+  return (
+    <Fragment>
+      <GlobalStyle />
+      <Logo />
+      <Router>
+        <Home path="/" />
+        <Home path="/pet/:categoryId" />
+        <Detail path="detail/:detailId" />
+      </Router>
+      <UserLogged>
+        {({ isAuth }) =>
+          isAuth ? (
+            <Router>
+              <Favs path="/favs" />
+              <User path="/user" />
+            </Router>
+          ) : (
+            <Router>
+              <NotRegisteredUser path="/favs" />
+              <NotRegisteredUser path="/user" />
+            </Router>
+          )
+        }
+      </UserLogged>
+
+      <NavBar />
+    </Fragment>
+  )
+}

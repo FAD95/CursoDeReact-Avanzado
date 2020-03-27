@@ -26,15 +26,3 @@ export const Img = styled.img`
   top: 0;
   width: 100%;
 `
-
-export const Button = styled.button`
-  padding-top: 8px;
-  display: flex;
-  align-items: center;
-  padding-top: 8px;
-  width: 80%;
-  margin: 0 auto;
-  & svg {
-    margin-right: 4px;
-  }
-`
